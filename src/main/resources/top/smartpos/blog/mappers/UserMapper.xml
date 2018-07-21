@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="top.smartpos.blog.mappers.UserMapper">
+    <select id="list" resultType="top.smartpos.blog.beans.domains.UserDomain">
+      select * from user
+    </select>
+    <select id="findById" resultType="top.smartpos.blog.beans.domains.UserDomain">
+      select * from user where id=#{id}
+    </select>
+    <insert id="save">
+        insert user(name,email) values (#{name},#{email})
+    </insert>
+    <update id="update">
+        update user set name=#{name} where id = #{id}
+    </update>
+    <delete id="delete">
+        DELETE FROM user WHERE id = #{id}
+    </delete>
+</mapper>

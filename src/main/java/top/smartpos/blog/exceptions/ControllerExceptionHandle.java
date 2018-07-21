@@ -4,6 +4,7 @@ import org.apache.commons.lang.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import top.smartpos.blog.beans.protocol.Result;
@@ -25,6 +26,7 @@ public class ControllerExceptionHandle {
             ApiException apiException = (ApiException) e;
             return ResultUtils.error(apiException.getResultEnum());
         }
+//        MissingServletRequestParameterException
         if (!(e instanceof MethodArgumentNotValidException)) return ResultUtils.error(ResultEnum.UNKOWN_ERROR);
         //验证参数的异常
         BindingResult bindingResult = ((MethodArgumentNotValidException) e).getBindingResult();

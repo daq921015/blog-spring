@@ -6,16 +6,23 @@
 
     <settings>
         <!-- 打印查询语句 -->
-        <!--<setting name="logImpl" value="STDOUT_LOGGING"></setting>-->
+        <setting name="logImpl" value="STDOUT_LOGGING"></setting>
         <!--自定映射-->
         <setting name="mapUnderscoreToCamelCase" value="true"></setting>
         <setting name="callSettersOnNulls" value="true"></setting>
     </settings>
     <!--<typeAliases>-->
-        <!--<package name="erp.chain.domain"/>-->
+    <!--<package name="erp.chain.domain"/>-->
     <!--</typeAliases>-->
     <!--<mappers>-->
-        <!--<package name="erp.chain.mapper"></package>-->
-        <!--&lt;!&ndash;<mapper resource="classpath:mapper/*Mapper.xml"/>&ndash;&gt;-->
+    <!--<package name="erp.chain.mapper"></package>-->
+    <!--&lt;!&ndash;<mapper resource="classpath:mapper/*Mapper.xml"/>&ndash;&gt;-->
     <!--</mappers>-->
+    <!--<plugins>-->
+    <!--&lt;!&ndash; com.github.pagehelper为PageHelper类所在包名 &ndash;&gt;-->
+    <!--<plugin interceptor="com.github.pagehelper.PageInterceptor">-->
+    <!--&lt;!&ndash; 使用下面的方式配置参数，后面会有所有的参数介绍 &ndash;&gt;-->
+    <!--<property name="param1" value="value1"/>-->
+    <!--</plugin>-->
+    <!--</plugins>-->
 </configuration>
