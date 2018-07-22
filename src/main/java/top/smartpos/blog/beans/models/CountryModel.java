@@ -1,19 +1,11 @@
-package top.smartpos.blog.beans.domains;
+package top.smartpos.blog.beans.models;
 
-import tk.mybatis.mapper.annotation.KeySql;
-import tk.mybatis.mapper.code.IdentityDialect;
 
-import javax.persistence.Id;
-import javax.persistence.Table;
-
-@Table(name = "country")
-public class CountryDomain {
-    @Id
-//    @KeySql(useGeneratedKeys = true)
-    @KeySql(dialect = IdentityDialect.DEFAULT)
+public class CountryModel {
     private Integer id;
     private String countryName;
     private String countryCode;
+
 
     public Integer getId() {
         return id;
