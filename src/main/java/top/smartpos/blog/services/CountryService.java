@@ -4,6 +4,7 @@ import org.apache.commons.lang3.math.NumberUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import tk.mybatis.mapper.entity.Example;
 import top.smartpos.blog.beans.domains.CountryDomain;
 import top.smartpos.blog.beans.models.CountryModel;
 import top.smartpos.blog.mappers.CountryMapper;
@@ -25,7 +26,13 @@ public class CountryService {
     }
 
     public CountryDomain findById() {
-        return countryMapper.selectByPrimaryKey(10011);
+//        Example
+        CountryDomain countryDomain = new CountryDomain();
+        countryDomain.setId(1);
+        return countryMapper.selectOne(countryDomain);
+//        return countryMapper.selectByPrimaryKey(10011);
+//
+//        return countryMapper.selectOneTest(countryDomain);
     }
 
     public Object save(CountryModel countryModel) {

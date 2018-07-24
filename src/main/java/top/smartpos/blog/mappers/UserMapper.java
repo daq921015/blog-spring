@@ -7,8 +7,8 @@ import top.smartpos.blog.beans.domains.UserDomain;
 
 import java.util.List;
 
-@Mapper
 @Component
+@Mapper
 public interface UserMapper {
     List<UserDomain> list();
 

@@ -15,7 +15,7 @@
 
         <!--数据库基本信息-->
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://127.0.0.1:3306/test"
+                        connectionURL="jdbc:mysql://192.168.0.41:3306/test"
                         userId="root"
                         password="root">
         </jdbcConnection>
@@ -23,7 +23,7 @@
         <!--生成实体类的位置以及包的名字-->
         <!--同样Mac用户：targetProject 为全路径-->
         <javaModelGenerator targetPackage="top.smartpos.blog.beans.domains"
-                            targetProject="F:/idea/blog-spring/src/main/java">
+                            targetProject="src/main/java">
             <!-- enableSubPackages:是否让schema作为包的后缀 -->
             <property name="enableSubPackages" value="true"/>
             <!-- 从数据库返回的值被清理前后的空格 -->
@@ -33,7 +33,7 @@
         <!--生成映射文件存放位置-->
         <!--同样Mac用户：targetProject 为全路径-->
         <sqlMapGenerator targetPackage="top.smartpos.blog.mappers"
-                         targetProject="F:/idea/blog-spring/src/main/resources">
+                         targetProject="src/main/resources">
             <!-- enableSubPackages:是否让schema作为包的后缀 -->
             <property name="enableSubPackages" value="false"/>
         </sqlMapGenerator>
@@ -41,7 +41,7 @@
         <!--生成Dao类存放位置,mapper接口生成的位置-->
         <!--同样Mac用户：targetProject 为全路径-->
         <javaClientGenerator type="XMLMAPPER" targetPackage="top.smartpos.blog.mappers"
-                             targetProject="F:/idea/blog-spring/src/main/java">
+                             targetProject="src/main/java">
             <!-- enableSubPackages:是否让schema作为包的后缀 -->
             <property name="enableSubPackages" value="false"/>
         </javaClientGenerator>
@@ -54,8 +54,7 @@
         <!--enableDeleteByExample="false" enableSelectByExample="false"-->
         <!--enableUpdateByExample="false">-->
         <!--</table>-->
-        <table tableName="tenant" domainObjectName="TenantDomain">
-        </table>
+        <table tableName="tenant" domainObjectName="TenantDomain"/>
 
     </context>
 </generatorConfiguration>
