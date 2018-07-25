@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import top.smartpos.blog.beans.protocol.Result;
 import top.smartpos.blog.enums.ResultEnum;
+import top.smartpos.blog.utils.LogUtils;
 import top.smartpos.blog.utils.ResultUtils;
 
 import java.util.ArrayList;
@@ -27,6 +28,7 @@ public class ControllerExceptionHandle {
             return ResultUtils.error(apiException.getResultEnum());
         }
 //        MissingServletRequestParameterException
+        LogUtils.error(e.getMessage(), e);
         if (!(e instanceof MethodArgumentNotValidException)) return ResultUtils.error(ResultEnum.UNKOWN_ERROR);
         //验证参数的异常
         BindingResult bindingResult = ((MethodArgumentNotValidException) e).getBindingResult();

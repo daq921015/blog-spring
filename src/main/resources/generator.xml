@@ -4,7 +4,6 @@
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 <generatorConfiguration>
     <context id="my" targetRuntime="MyBatis3">
-
         <!--自动实现Serializable接口-->
         <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
 

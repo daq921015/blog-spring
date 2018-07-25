@@ -4,13 +4,17 @@ import org.apache.commons.lang3.math.NumberUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import tk.mybatis.mapper.entity.EntityTable;
 import tk.mybatis.mapper.entity.Example;
+import tk.mybatis.mapper.mapperhelper.EntityHelper;
 import top.smartpos.blog.beans.domains.CountryDomain;
 import top.smartpos.blog.beans.models.CountryModel;
 import top.smartpos.blog.mappers.CountryMapper;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class CountryService {
@@ -25,14 +29,18 @@ public class CountryService {
         return countryMapper.selectAll();
     }
 
-    public CountryDomain findById() {
+    public int findById() {
 //        Example
-        CountryDomain countryDomain = new CountryDomain();
-        countryDomain.setId(1);
-        return countryMapper.selectOne(countryDomain);
-//        return countryMapper.selectByPrimaryKey(10011);
-//
-//        return countryMapper.selectOneTest(countryDomain);
+        Example example = new Example(CountryDomain.class, true, true);
+        example.setCountProperty("id");
+        Example.Criteria criteria = example.createCriteria();
+        Example.Criteria criteria2 = example.createCriteria();
+        criteria.andEqualTo("id", 1);
+        criteria.andEqualTo("countryCode", "001");
+        criteria.orEqualTo("countryName", "北京");
+        criteria2.orEqualTo("addr", 1);
+        example.or(criteria2);
+        return countryMapper.selectCountByExample(example);
     }
 
     public Object save(CountryModel countryModel) {

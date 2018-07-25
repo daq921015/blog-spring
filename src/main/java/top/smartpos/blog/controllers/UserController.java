@@ -40,7 +40,7 @@ public class UserController {
         return userService.findById(id);
     }
 
-    @PostMapping(value = "/save")
+    @GetMapping(value = "/save")
     public long save(@RequestParam @NotBlank @NotNull String name, @RequestParam @NotBlank @NotNull String email) {
         System.out.println("nihao1");
         System.out.println(name);

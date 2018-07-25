@@ -23,7 +23,7 @@ public class CountryController {
     }
 
     @GetMapping("/findById")
-    public CountryDomain fineById() {
+    public Object fineById() {
         return countryService.findById();
     }
 
