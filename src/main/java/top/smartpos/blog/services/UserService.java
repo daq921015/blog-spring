@@ -1,14 +1,14 @@
 package top.smartpos.blog.services;
 
-import com.github.pagehelper.Page;
-import com.github.pagehelper.PageHelper;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import top.smartpos.blog.beans.domains.UserDomain;
+import top.smartpos.blog.beans.models.UserModel;
 import top.smartpos.blog.mappers.UserMapper;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -21,7 +21,7 @@ public class UserService {
     }
 
     @Transactional(readOnly = true)
-    public List<UserDomain> list(int pageNumber, int pageSize) {
+    public List<UserDomain> list() {
 //        Page<Object> page = PageHelper.startPage(pageNumber, pageSize, false);
         return userMapper.selectAll();
     }
@@ -32,14 +32,13 @@ public class UserService {
     }
 
     @Transactional
-    public long save(String name, String email) {
-        UserDomain userDomain1 = new UserDomain.Builder().name("ww").email("ww@163.com").build();
-//        List<UserDomain> list = new ArrayList<>();
-//        list.add(userDomain1);
-        long la = userMapper.insertIgnore(userDomain1);
-        System.out.println(userDomain1.getId());
-        return la;
-        //        return userMapper.insertSelective(new UserDomain.Builder().name(name).email(email).build());
+    public long saveOrUpdate(UserModel userModel) {
+        UserDomain userDomain = new UserDomain();
+        BeanUtils.copyProperties(userModel, userDomain);
+        if (userModel.getId() == null || userModel.getId() <= 0) {
+            return userMapper.insertSelective(userDomain);
+        }
+        return userMapper.updateByPrimaryKeySelective(userDomain);
     }
 
     @Transactional

@@ -7,12 +7,14 @@
 <body>
 <div th:replace="~{fragments/header :: header}"></div>
 <h2 th:text="${title}"></h2>
-<form action="/user/save" th:action="@{/user/save}" method="post">
-    <input type="hidden" name="id"><br>
-    名称: <input type="text" name="name"><br>
-    邮箱: <input type="text" name="email"><br>
+<div>
+    <a href="/user/list">返回主页</a>
+</div>
+<form action="/user/saveOrUpdate" th:action="@{/user/saveOrUpdate}" method="post" th:object="${user}">
+    <input type="hidden" name="id" th:value="*{id}"><br>
+    名称: <input type="text" name="name" th:value="*{name}"><br>
+    邮箱: <input type="text" name="email" th:value="*{email}"><br>
     <input type="submit" value="提交">
-
 </form>
 <div th:replace="~{fragments/footer :: footer}"></div>
 </body>
