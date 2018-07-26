@@ -5,6 +5,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import tk.mybatis.mapper.entity.Example;
 import top.smartpos.blog.beans.domains.UserDomain;
 import top.smartpos.blog.beans.models.UserModel;
 import top.smartpos.blog.mappers.UserMapper;
@@ -24,6 +25,7 @@ public class UserService {
     public List<UserDomain> list() {
 //        Page<Object> page = PageHelper.startPage(pageNumber, pageSize, false);
         return userMapper.selectAll();
+
     }
 
     @Transactional(readOnly = true)

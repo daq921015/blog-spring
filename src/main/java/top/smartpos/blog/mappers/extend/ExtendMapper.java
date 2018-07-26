@@ -2,12 +2,9 @@ package top.smartpos.blog.mappers.extend;
 
 import org.apache.ibatis.annotations.InsertProvider;
 import org.apache.ibatis.annotations.Options;
-import org.apache.ibatis.annotations.SelectProvider;
 import tk.mybatis.mapper.annotation.RegisterMapper;
 import tk.mybatis.mapper.common.Mapper;
 import tk.mybatis.mapper.common.MySqlMapper;
-import tk.mybatis.mapper.provider.SpecialProvider;
-import tk.mybatis.mapper.provider.base.BaseInsertProvider;
 
 import java.util.List;
 
